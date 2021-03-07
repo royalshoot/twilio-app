@@ -1,0 +1,41 @@
+<div class="p-grid">
+    <div class="p-col-4 p-offset-4">
+        <h1>Customer Service Portal</h1>
+      <div style="margin-top: 70px">
+        <p-card>
+            <ng-template pTemplate="header">
+                <div style="text-align: center; padding-top: 20px">
+                  <h2>Login</h2>
+                </div>
+            </ng-template>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label >Email</label>
+                        <input formControlName="username" type="text" pInputText required>
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                            <div *ngIf="username.errors.required" class="error">Username is required</div>
+                        </div>
+                        <span style="color:red;"></span>
+                    </div>
+                    <div class="p-field">
+                        <label >Password</label>
+                        <input formControlName="password" type="password" pInputText required>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <div *ngIf="password.errors.required" class="error">Password is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center">
+                  <button type="submit" pButton label="Login"></button>
+                </div>
+            </form>
+            <ng-template pTemplate="footer">
+              <div style="text-align: center">
+                <small>&copy; ALL RIGHTS RESERVED</small>
+              </div>
+            </ng-template>
+        </p-card>
+      </div>
+    </div>
+</div>
