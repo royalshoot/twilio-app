@@ -2,7 +2,7 @@ import { HttpHeaders } from "@angular/common/http";
 import { LocalStorage } from "./global";
 
 export class AppCommon{
-    static baseUrl: string  = "http://localhost:5000/";
+    static baseUrl: string  = "https://twilio-app.vercel.app/";
     static getAccountId(){
         return new LocalStorage().get("accountId");
     }
