@@ -2,7 +2,7 @@ import { HttpHeaders } from "@angular/common/http";
 import { LocalStorage } from "./global";
 
 export class AppCommon{
-    static baseUrl: string  = "http://www.twilio.somee.com/";
+    static baseUrl: string  = "https://twilio-backend.azurewebsites.net/";
     static getAccountId(){
         return new LocalStorage().get("accountId");
     }
