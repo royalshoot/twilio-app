@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { AppCommon } from 'src/common/common';
-import { LocalStorage } from 'src/common/global';
-import { ChatService } from 'src/services/chat.service';
+import { GroupService } from 'src/services/group.service';
 
 @Component({
-  selector: 'app-individual',
-  templateUrl: './individual.component.html',
-  styleUrls: ['./individual.component.css']
+  selector: 'app-group-chat',
+  templateUrl: './group-chat.component.html',
+  styleUrls: ['./group-chat.component.css']
 })
-export class IndividualComponent implements OnInit {
-  /**____________DECORATORS____________ */
+export class GroupChatComponent implements OnInit {
+/**____________DECORATORS____________ */
 
   /**____________PARAMETERS____________ */
-  clients: any[] = [];
+  groups: any[] = [];
   messages: any[] = [];
   textMessage: string = "";
   selectedClient!:number;
   blocked: boolean = false;
 
   /**____________CONSTRUCTORS__________ */
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: GroupService) { }
   /**____________LIFE CYCLE HOOKS______ */
   ngOnInit(): void {
-    this.getClients();
+    this.getGroups();
   }
   /**____________SERVICE FUNCTIONS_____ */
-  getClients(){
+  getGroups(){
     this.blocked = true;
-    this.chatService.getClients().subscribe(res=>{
+    this.chatService.getAllGroups().subscribe((res:any)=>{
       this.blocked = false;
       if(res.success){
         res.result.forEach(element => {
           element["active"] = false;
         });
-        this.clients = res.result;
+        this.groups = res.result;
 
       }
     });
@@ -41,30 +39,45 @@ export class IndividualComponent implements OnInit {
 
   /**____________BASIC FUNCTIONS_______ */
   tapClient(client: any){
-    this.selectedClient = client.clientId;
-    this.clients.forEach(element => {
+    this.selectedClient = client.groupId;
+    this.groups.forEach(element => {
       element.active = false;
     });
-    this.clients.filter(m=>m.clientId == client.clientId)[0].active = true;
+    this.groups.filter(m=>m.groupId == client.groupId)[0].active = true;
     this.blocked = true;
-    this.chatService.getMessages(client.clientId).subscribe(res=>{
-      this.blocked = false;
+    this.getGroupMessages();
+  }
+
+  getGroupMessages(){
+    this.chatService.getGroupMessages(this.selectedClient).subscribe((res:any)=>{
       if(res.success){
+        this.blocked = false;
         this.messages = res.result;
       }
     })
   }
+
+  getNumbers(clients:any[]){
+    let finalStr = [];
+    clients.forEach(element => {
+      finalStr.push(element.phoneNumber);
+    });
+    return finalStr.toString();
+  }
+
   sendMessage(event:any){
     if(event){
       let obj = {
-        clientId: this.selectedClient,
+        clientId: 0,
+        groupId: this.selectedClient, 
         body: event.value
       };
       event.value = "";
       this.blocked = true;
-      this.chatService.sendMessage(obj).subscribe(res=>{
+      this.chatService.sendGroupMessage(obj).subscribe((res:any)=>{
         this.blocked = false;
         if(res.success){
+          this.getGroupMessages();
           this.messages.push(res.result);
         }
       });
@@ -74,6 +87,5 @@ export class IndividualComponent implements OnInit {
     }
   }
   /**____________SHARED FUNCTIONS______ */
-
 
 }

@@ -1,0 +1,9 @@
+
+<div style="text-align: center;">
+    <div class="bitly-form"><input style="width: 100%;" pInputText type="text" [(ngModel)]="fullUrl" placeholder="Please enter your full url here." /></div>
+    <div class="bitly-form"><button type="button" pButton label="create short link" (click)="shortenLink()"></button></div>
+    <div class="bitly-form">
+        <input pInputText id="copied" type="text" readonly [value]="shortenUrl" /> <button type="button" pButton label="{{copyButtonText}}" (click)="copyText()"></button>
+    </div>
+</div>
+

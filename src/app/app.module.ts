@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { LocalStorage } from 'src/common/global';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
@@ -26,7 +27,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

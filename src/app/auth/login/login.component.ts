@@ -27,7 +27,14 @@ export class LoginComponent implements OnInit {
     
     let obj = this.loginForm.value;
     if(!this.loginForm.invalid){
-      if(obj.username =="admin@example.com" && obj.password=="ABC123"){
+      if(obj.username =="johnson@example.com" && obj.password=="ABC123@"){
+        new LocalStorage().set("accountId", "1");
+        this._router.navigate(['/main'])
+      }else if(obj.username =="daniyal@example.com" && obj.password=="ABC123"){
+        new LocalStorage().set("accountId", "2");
+        this._router.navigate(['/main'])
+      }
+      else if(obj.username =="admin@example.com" && obj.password=="ABC123"){
         new LocalStorage().set("accountId", "3");
         this._router.navigate(['/main'])
       }else{

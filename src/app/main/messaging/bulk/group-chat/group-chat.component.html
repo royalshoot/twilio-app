@@ -1,6 +1,6 @@
 <div style="text-align: right;"><a style="color: #fff;" [routerLink]="['/main/messaging']">back</a></div>
 <div class="container">
-    <h2 class=" text-center" style="color:#fff;">Individual Messaging</h2>
+    <h2 class=" text-center" style="color:#fff;">Group Messaging</h2>
     <div class="messaging">
         <div class="inbox_msg">
             <div class="inbox_people">
@@ -19,15 +19,15 @@
                 </div>
                 <div class="inbox_chat">
                     <div class="chat_list active_chat" [class.active_chat]="person.active"
-                        *ngFor="let person of clients;let i=index;" (click)="tapClient(person)">
+                        *ngFor="let person of groups;let i=index;" (click)="tapClient(person)">
 
                         <div class="chat_people">
                             <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
                                     alt="sunil">
                             </div>
                             <div class="chat_ib">
-                                <h5>{{person.name}}</h5>
-                                <p>{{person.phoneNumber}}</p>
+                                <h5>{{person.groupName}}</h5>
+                                <p>{{getNumbers(person.clients)}}</p>
                             </div>
                         </div>
                     </div>

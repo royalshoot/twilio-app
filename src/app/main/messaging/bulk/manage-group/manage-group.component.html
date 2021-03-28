@@ -1,0 +1,45 @@
+<div>
+    <button pButton type="button" (click)="addGroupShow()" title="Create Group" label="Create New Group"></button>
+</div>
+<div style="text-align: center;" *ngIf="showAddGroup">
+    <form [formGroup]="groupForm" (ngSubmit)="addGroup()">
+        <div class="c-input">
+            <input type="text" pInputText formControlName="groupName" placeholder="Enter Group Name" required />
+            <div *ngIf="groupName.invalid && (groupName.dirty || groupName.touched)" class="alert alert-danger">
+
+                <div class="c-error" *ngIf="groupName.errors.required">
+                    Group Name is required.
+                </div>
+            </div>
+        </div>
+        <div class="c-input">
+            <p-multiSelect placeholder="select clients" [options]="clients" formControlName="clientIds"
+                optionLabel="value"></p-multiSelect>
+        </div>
+
+        <button pButton type="submit" [disabled]="!groupForm.valid" label="Submit"></button>
+        <button pButton type="button" class="p-button-danger" label="Cancel"(click)="cancelAddGroup()" ></button>
+    </form>
+</div>
+<p-table [value]="groups" *ngIf="!showAddGroup">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>#</th>
+            <th>Group Name</th>
+            <th>Clients</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-g>
+        <tr>
+            <td>{{g.groupId}}</td>
+            <td>{{g.groupName}}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let c of g.clients"> {{c.name}} ({{c.phoneNumber}})</li>
+                </ul>
+            </td>
+            <td><button pButton label="remove"(click)="removeGroup(g.groupId)" class="p-button-sm p-button-danger"></button></td>
+        </tr>
+    </ng-template>
+</p-table>
