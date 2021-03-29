@@ -1,0 +1,37 @@
+<h1>App Settings<small>(make general settings of your app here)</small></h1>
+<p><a [routerLink]="['/main']">back</a></p>
+
+<div class="p-grid">
+    <div class="p-col-4 p-offset-3">
+        <div>
+            <form [formGroup]="settingForm" (submit)="saveSettings()">
+                <div class="form-group">
+                    <label>Default Message</label>
+                    <textarea pInputText formControlName="defaultMessage">
+
+                    </textarea>
+                    <!-- <input pInputText formControlName="defaultMessage" type="text"/> -->
+                    <div *ngIf="defaultMessage.invalid && (defaultMessage.dirty || defaultMessage.touched)" class="error-msg">
+
+                        <div class="c-error" *ngIf="defaultMessage.errors.required">
+                            Default message is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Delay in minutes</label>
+                    <input pInputText formControlName="delayMinutes" type="number"/>
+                    <div *ngIf="delayMinutes.invalid && (delayMinutes.dirty || delayMinutes.touched)" class="error-msg">
+
+                        <div class="c-error" *ngIf="delayMinutes.errors.required">
+                            Delay minutes is required.
+                        </div>
+                    </div>
+                </div>
+                <button pButton type="submit" [disabled]="!settingForm.valid" label="Save"></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<p-blockUI [blocked]="blocked"></p-blockUI>

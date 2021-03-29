@@ -3,11 +3,19 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import {Routes, RouterModule} from '@angular/router';
 import {ButtonModule} from 'primeng/button';
+import { AppSettingComponent } from './app-setting/app-setting.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { BlockUIModule } from 'primeng/blockui';
 
 const routes:Routes = [
   {
     path:'',
     component:MainComponent
+  },
+  {
+    path:'app-setting',
+    component: AppSettingComponent
   },
   {
     path:'messaging',
@@ -17,10 +25,13 @@ const routes:Routes = [
 
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [MainComponent, AppSettingComponent],
   imports: [
     CommonModule,
     ButtonModule,
+    BlockUIModule,
+    InputTextModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   providers:[]
