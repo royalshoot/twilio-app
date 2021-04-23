@@ -29,4 +29,17 @@ export class SettingService {
       })
     );
   }
+
+
+
+  
+  getdatabyPhoneNumber(phonenumber: string) {
+    let url = AppCommon.baseUrl + `googlesheet/${phonenumber}`;
+    return this.http.get(url).pipe(
+      map(res => {
+        return res;
+      })
+    )
+  }
+
 }

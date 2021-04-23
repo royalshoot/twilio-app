@@ -1,0 +1,25 @@
+<nav class="t-header">
+    <div class="t-header-brand-wrapper">
+        <a href="index.html">
+            <img class="logo" src="../../assets/impiricus-logo.png" alt="">
+            <img class="logo-mini" src="../../assets/impiricus-logo.png" alt="">
+        </a>
+    </div>
+    <div class="t-header-content-wrapper">
+        <div class="t-header-content">
+            <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
+                <svg id="i-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M4 8 L28 8 M4 16 L28 16 M4 24 L28 24" />
+                </svg>
+            </button>
+            <span>{{currentDate | date: 'dd MMM, yyyy'}}</span>
+            <ul class="nav ml-auto">
+                <li class="nav-item dropdown">
+                    <button class="btn btn-primary" type="button" [routerLink]="['/login']">
+                        Sign Out
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>

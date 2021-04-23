@@ -1,0 +1,104 @@
+<div></div>
+<app-top-navigation></app-top-navigation>
+<div class="page-body">
+  <app-side-navigation></app-side-navigation>
+  <div class="page-content-wrapper">
+      <div class="page-content-wrapper-inner mt-4">
+          <div class="content-viewport">
+              <div class="row">
+                  <div class="col-12 pt-5 pb-3">
+                      <h4>Access Requests</h4>
+                      <p *ngIf="doctordata" class="text-gray">Total Access Requests: <strong>{{doctordata.length}}</strong></p>
+                      <!--<p class="text-gray">Logged-In using your phone: <strong>{{phonenumber}}</strong></p>-->
+                  </div>
+              </div>
+              <hr class="mt-0 mb-4"/>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <div class="spinner-border" *ngIf="!doctordata">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                  <div class="col-md-4 col-12 equel-grid" *ngFor="let item of doctordata">
+                      <div class="grid">
+                        <div class="grid-body">
+                            <p><strong>Patient Name: </strong>{{item.patientName || '-'}}</p>
+                            <!--<p><strong>Patient Phone Number: </strong>{{item.patientPhoneNumber || '-'}}</p>-->
+                            <p class="mt-2"><strong>Submitted On: </strong>{{item.submitiondate || '-'}}</p>
+                            <!--<p><strong>Last Updated: </strong>{{item.lastUdapteDate || '-'}}</p>-->
+                            <hr />
+                            <p><strong>Submitted on behalf of: </strong> {{item.personAssign || '-'}}</p>
+                            <p><strong>Type of Request: </strong>{{item.requestType || '-'}}</p>
+                            <p class="my-4 float-right">
+                                <a class="btn btn-success" (click)="showmodel(item)">Details</a>
+                            </p>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="DetailsModal" *ngIf="doctordata && showmodelhtml">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title font-weight-bold">REQUEST DETAILS</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body p-4">
+              <div class="row">
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Patient Name</strong></p>
+                      <p>{{detail.patientName || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Patient Phone Number</strong></p>
+                      <p>{{detail.patientPhoneNumber || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Submission Date</strong></p>
+                      <p>{{detail.submitiondate || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Last Update Date</strong></p>
+                      <p>{{detail.lastUdapteDate || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Submitted on behalf of</strong></p>
+                      <p>{{detail.personAssign || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Type of Request</strong></p>
+                      <p>{{detail.requestType || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Therapy Requested?</strong></p>
+                      <p>{{detail.therapyRequest || '-'}}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Patient Demographic Info</strong></p>
+                      <p>{{detail.patientDemograpicInfo || '-'}}</p>
+                  </div>
+                  <div class="col-12 mt-3">
+                      <p><strong>Attached Files</strong></p>
+                      <ul>
+                        <li *ngFor="let link of detail.attachedFiles">
+                          <a href="{{link}}" target="_blank">{{link}}</a>
+                        </li>
+                      </ul>
+                  </div>
+                  <div class="col-12 mt-3">
+                      <p><strong>Status Details</strong></p>
+                      <ul>
+                        <li *ngFor="let status of detail.status">{{status}}</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>

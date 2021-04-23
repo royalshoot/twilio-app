@@ -1,4 +1,105 @@
-<div class="dashboard-header"><a style="color: #fff;" [routerLink]="['/login']">Sign out</a></div>
+<div></div>
+<app-top-navigation></app-top-navigation>
+<div class="page-body">
+  <app-side-navigation></app-side-navigation>
+  <div class="page-content-wrapper mt-0">
+      <div class="page-content-wrapper-inner">
+          <div class="content-viewport">
+              <div class="row">
+                  <div class="col-12 py-5">
+                      <h4>Dashboard</h4>
+                      <p class="text-gray">Welcome to your Impiricus Dashboard!</p>
+                  </div>
+              </div>
+              <hr class="mt-0 mb-4"/>
+              <div class="row">
+                  <div class="col-md-4 col-12 equel-grid">
+                      <div class="grid">
+                        <a pButton style="padding: 30px; margin: 20px; font-size: 20px" class="p-button-lg" label="User Info"></a>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-12 equel-grid">
+                      <div class="grid">
+                        <a [routerLink]="['/access-request']" pButton style="padding: 30px; margin: 20px; font-size: 20px" class="p-button-lg p-button-help" label="Access Request"></a>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-12 equel-grid">
+                      <div class="grid">
+                        <a [routerLink]="['/main/messaging']" pButton style="padding: 30px; margin: 20px; font-size: 20px" class="p-button-lg p-button-danger" label="Messaging"></a>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-12 equel-grid">
+                      <div class="grid">
+                        <a [routerLink]="['/main/app-setting']" pButton style="padding: 30px; margin: 20px; font-size: 20px" class="p-button-lg p-button-danger" label="App Settings"></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="DetailsModal">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Request Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body p-4">
+              <!-- <div class="row">
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Patient Name</strong></p>
+                      <p>{{Column : H }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Patient Phone Number</strong></p>
+                      <p>{{Column : I }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Submission Date</strong></p>
+                      <p>{{Column : F }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Last Update Date</strong></p>
+                      <p>{{Column : B }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Submitted on behalf of</strong></p>
+                      <p>{{Column : O }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Type of Request</strong></p>
+                      <p>{{Column : K }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Therapy Requested?</strong></p>
+                      <p>{{Column : J }}</p>
+                  </div>
+                  <div class="col-sm-6 mt-3">
+                      <p><strong>Patient Demographic Info</strong></p>
+                      <p>{{Column : R }}</p>
+                  </div>
+                  <div class="col-12 mt-3">
+                      <p><strong>Attached Files</strong></p>
+                      <p>{{Column : P }}</p>
+                      <p>{{Column : Q }}</p>
+                  </div>
+                  <div class="col-12 mt-3">
+                      <p><strong>Status Details</strong></p>
+                      <p>{{Column : D }}</p>
+                  </div>
+              </div> -->
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="dashboard-header"><a style="color: #fff;" [routerLink]="['/login']">Sign out</a></div>
 <div class="p-grid dashboard-main">
   <div class="p-col-6 p-offset-3">
     <h2>DASHBOARD</h2>
@@ -9,4 +110,4 @@
       <a [routerLink]="['/main/app-setting']" pButton style="padding: 30px; margin: 20px; font-size: 20px" class="p-button-lg p-button-danger" label="App Settings"></a>
     </div>
   </div>
-</div>
+</div> -->

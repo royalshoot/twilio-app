@@ -1,4 +1,121 @@
-<div class="p-grid">
+<main class="d-flex align-items-center min-vh-100 py-3 py-md-0 back-image" >
+  <div class="row no-gutters w-100">
+    <div class="col-md-4 offset-md-4">
+      <div class="card login-card">
+        <div class="card-body">
+          <div class="brand-wrapper">
+            <img src="../../assets/impiricus-logo.png" alt="logo" class="logo">
+          </div>
+          <h5 style="font-weight: bold">WELCOME TO IMPIRICUS</h5>
+        </div>
+        <div class="card-body" style="background-color: #f5f6f8">
+          <p class="login-card-description">Doctor Sign-In</p>
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <form [formGroup]="PhoneForm" (ngSubmit)="onPhoneSubmit()">
+                <div class="form-group">
+                  <label for="tel" class="sr-only">Phone Number</label>
+                  <div class="input-group mb-3">
+                    <input type="tel" name="tel" id="tel" class="form-control d-inline" placeholder="12345678900" formControlName="phonenumber">
+                    <div class="input-group-append">
+                      <input name="login" id="login" class="btn login-btn mb-4" type="submit" value="Login">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <hr />
+          <p class="login-card-description">Administrator Sign-In</p>
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="email" class="sr-only">Email</label>
+                  <input formControlName="username" type="text" pInputText required class="form-control" placeholder="Email address">
+                  <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <div *ngIf="username.errors.required" class="error">Email is required</div>
+                  </div>
+                  <span style="color:red;"></span>
+                </div>
+                <div class="form-group mb-4">
+                  <label for="password" class="sr-only">Password</label>
+                  <input formControlName="password" type="password" pInputText required class="form-control" placeholder="****">
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.required" class="error">Password is required</div>
+                  </div>
+                </div>
+                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="card login-card">
+        <div class="card-body">
+          <div class="brand-wrapper">
+            <img src="./assets/impiricus-logo.png" alt="logo" class="logo">
+          </div>
+          <h5 style="font-weight: bold">WELCOME TO IMPIRICUS</h5>
+        </div>
+        <div class="card-body" style="background-color: #f5f6f8">
+          <div *ngIf="showphoneNumber">
+            <p class="login-card-description">Doctor Sign-In</p>
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
+                <form [formGroup]="PhoneForm" (ngSubmit)="onPhoneSubmit()">
+                  <div class="form-group">
+                    <label for="tel" class="sr-only">Phone Number</label>
+                    <div class="input-group mb-3">
+                      <input type="tel" name="tel" id="tel" formControlName="phonenumber" class="form-control d-inline" placeholder="12345678">
+                      <div class="input-group-append">
+                        <input name="login" id="login" class="btn login-btn mb-4" type="submit" value="Login">
+                      </div>
+                      <button class="btn btn-block login-btn mb-2" (click)="phonelogin()">Administrator Sign-In</button>
+
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <hr />
+          </div>
+          <div *ngIf="showphoneNumber==false">
+            <p class="login-card-description">Administrator Sign-In</p>
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="email" class="sr-only">Email</label>
+                    <input formControlName="username" type="text" pInputText required class="form-control" placeholder="Email address">
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                      <div *ngIf="username.errors.required" class="error">Username is required</div>
+                    </div>
+                    <span style="color:red;"></span>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="password" class="sr-only">Password</label>
+                    <input formControlName="password" type="password" pInputText required class="form-control" placeholder="***********">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                      <div *ngIf="password.errors.required" class="error">Password is required</div>
+                    </div>
+                  </div>
+                  <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login">
+                  <button class="btn btn-block login-btn mb-2" (click)="phonelogin()">Login with phone</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+</main>
+
+
+
+
+<!-- <div class="p-grid">
   <div class="p-col-4 p-offset-4">
     <h1>Customer Service Portal</h1>
     <div style="margin-top: 70px">
@@ -38,4 +155,4 @@
       </p-card>
     </div>
   </div>
-</div>
+</div> -->

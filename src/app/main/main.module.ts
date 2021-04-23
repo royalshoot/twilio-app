@@ -7,6 +7,9 @@ import { AppSettingComponent } from './app-setting/app-setting.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { BlockUIModule } from 'primeng/blockui';
+import { SideNavigationComponent } from '../side-navigation/side-navigation.component';
+import { TopNavigationComponent } from '../top-navigation/top-navigation.component';
+import { AccessRequestComponent } from '../access-request/access-request.component';
 
 const routes:Routes = [
   {
@@ -25,7 +28,7 @@ const routes:Routes = [
 
 
 @NgModule({
-  declarations: [MainComponent, AppSettingComponent],
+  declarations: [MainComponent, AppSettingComponent,SideNavigationComponent,TopNavigationComponent,AccessRequestComponent],
   imports: [
     CommonModule,
     ButtonModule,

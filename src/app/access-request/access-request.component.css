@@ -1,0 +1,11 @@
+a, button {
+  cursor: pointer
+}
+
+ul {
+  list-style-type: initial !important
+}
+
+.page-body .page-content-wrapper {
+  margin-top: 0
+}

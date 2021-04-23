@@ -6,8 +6,10 @@ import { LocalStorage } from 'src/common/global';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-
-new LocalStorage().set("accountId","1");
+import { SideNavigationComponent } from './side-navigation/side-navigation.component';
+import { TopNavigationComponent } from './top-navigation/top-navigation.component';
+import { AccessRequestComponent } from './access-request/access-request.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const routes: Routes = [
   {
@@ -17,18 +19,24 @@ const routes: Routes = [
   {
     path:'main',
     loadChildren: ()=>import('../app/main/main.module').then(m=>m.MainModule)
-  }
+  },
+  {
+    path:'access-request',
+    loadChildren: ()=>import('../app/access-request/access-request.module').then(m=>m.CustomerviewModule)
+  },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
